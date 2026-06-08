@@ -7,6 +7,7 @@ const beefreeDir = join(root, 'public', 'beefree')
 
 const sections = [
   { label: 'tokens.css', file: 'tokens.css' },
+  { label: 'topbar.css', file: 'topbar.css' },
   { label: 'stage-toolbar.css', file: 'stage-toolbar.css' },
   { label: 'sidebar.css', file: 'sidebar.css' },
   { label: 'tab-icons.css', file: 'tab-icons.css' },
@@ -17,7 +18,7 @@ const sections = [
 
 const bundled = [
   '/* Bundled for Beefree iframe — do not @import (blocked by ORB cross-origin). */',
-  '/* Source files: public/beefree/{tokens,stage-toolbar,sidebar,tab-icons,block-tiles,block-icons,styles-panel}.css — run: npm run beefree:css */',
+  '/* Source files: public/beefree/{tokens,topbar,stage-toolbar,sidebar,tab-icons,block-tiles,block-icons,styles-panel}.css — run: npm run beefree:css */',
   '',
   ...sections.flatMap(({ label, file }) => [
     `/* ── ${label} ── */`,

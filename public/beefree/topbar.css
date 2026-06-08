@@ -1,0 +1,8 @@
+/*
+  SDK topbar — hide controls not needed in this integration.
+  https://docs.beefree.io/beefree-sdk/other-customizations/appearance/custom-css/css-changes
+ */
+
+body.bee--cs .topbar-structure-button--cs {
+  display: none !important;
+}

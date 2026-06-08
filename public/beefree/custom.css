@@ -52,6 +52,16 @@
   --custom-brand-secondary-color: var(--color-teal) !important;
 }
 
+/* ── topbar.css ── */
+/*
+  SDK topbar — hide controls not needed in this integration.
+  https://docs.beefree.io/beefree-sdk/other-customizations/appearance/custom-css/css-changes
+ */
+
+body.bee--cs .topbar-structure-button--cs {
+  display: none !important;
+}
+
 /* ── stage-toolbar.css ── */
 /*
   Stage toolbar — desktop/mobile toggle row above the canvas (Mailchimp-style).
