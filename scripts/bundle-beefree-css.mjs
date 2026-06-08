@@ -12,11 +12,12 @@ const sections = [
   { label: 'tab-icons.css', file: 'tab-icons.css' },
   { label: 'block-tiles.css', file: 'block-tiles.css' },
   { label: 'block-icons.css', file: 'block-icons.css' },
+  { label: 'styles-panel.css', file: 'styles-panel.css' },
 ]
 
 const bundled = [
   '/* Bundled for Beefree iframe — do not @import (blocked by ORB cross-origin). */',
-  '/* Source files: public/beefree/{tokens,stage-toolbar,sidebar,tab-icons,block-tiles,block-icons}.css — run: npm run beefree:css */',
+  '/* Source files: public/beefree/{tokens,stage-toolbar,sidebar,tab-icons,block-tiles,block-icons,styles-panel}.css — run: npm run beefree:css */',
   '',
   ...sections.flatMap(({ label, file }) => [
     `/* ── ${label} ── */`,

@@ -1,12 +1,13 @@
 /*
-  Sidebar tab rail icons (Blocks, Rows) — SVG via mask-image for active/inactive tinting.
-  Page tab keeps the default SDK SVG styled in sidebar.css.
+  Sidebar tab rail icons (Blocks, Rows, Styles) — SVG via mask-image for active/inactive tinting.
 */
 
 body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(1) .tabs__iconwrapper svg,
 body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(1) [class*='tabIconWrapper'] svg,
 body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2) .tabs__iconwrapper svg,
-body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2) [class*='tabIconWrapper'] svg {
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2) [class*='tabIconWrapper'] svg,
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(3) .tabs__iconwrapper svg,
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(3) [class*='tabIconWrapper'] svg {
   visibility: hidden !important;
 }
 
@@ -28,9 +29,20 @@ body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2) [class*='tabI
   mask: url('/icons/tabs/rows.svg') no-repeat center / contain !important;
 }
 
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(3) .tabs__iconwrapper,
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(3) [class*='tabIconWrapper'] {
+  width: 24px !important;
+  height: 24px !important;
+  background-color: var(--tab-inactive-icon) !important;
+  -webkit-mask: url('/icons/tabs/styles.svg') no-repeat center / contain !important;
+  mask: url('/icons/tabs/styles.svg') no-repeat center / contain !important;
+}
+
 body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(1)[class*='activeTab'] .tabs__iconwrapper,
 body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(1)[class*='activeTab'] [class*='tabIconWrapper'],
 body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2)[class*='activeTab'] .tabs__iconwrapper,
-body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2)[class*='activeTab'] [class*='tabIconWrapper'] {
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2)[class*='activeTab'] [class*='tabIconWrapper'],
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(3)[class*='activeTab'] .tabs__iconwrapper,
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(3)[class*='activeTab'] [class*='tabIconWrapper'] {
   background-color: var(--tab-active-icon) !important;
 }

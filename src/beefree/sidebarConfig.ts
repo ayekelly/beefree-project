@@ -4,6 +4,9 @@ export const sidebarTranslations: NonNullable<IBeeConfig['translations']> = {
   'bee-common-widget-bar': {
     content: 'Blocks',
     structure: 'Rows',
-    body: 'Page',
+    body: 'Styles',
+  },
+  'widget-groups': {
+    'page-options': 'Email styles',
   },
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
   Builder,
   useBuilder,
@@ -10,6 +10,8 @@ import { getCustomCssUrl } from '../beefree/customCss'
 import { sidebarTranslations } from '../beefree/sidebarConfig'
 import { topbarTranslations } from '../beefree/topbarConfig'
 import { blockTranslations } from '../beefree/blockConfig'
+import { contentDefaults, advancedPermissions } from '../beefree/settingsConfig'
+import { BLANK_TEMPLATE, ensureContentAreaAlign } from '../beefree/defaultTemplate'
 import './BeefreeEditor.css'
 
 const editorTranslations = {
@@ -21,11 +23,6 @@ const editorTranslations = {
 const UID = 'demo-user'
 const AUTH_URL = 'http://localhost:3001/proxy/bee-auth'
 
-const BLANK_TEMPLATE: IEntityContentJson = {
-  comments: {},
-  page: {} as IEntityContentJson['page'],
-}
-
 const config: IBeeConfig = {
   uid: UID,
   container: 'beefree-sdk-builder',
@@ -33,13 +30,24 @@ const config: IBeeConfig = {
   customCss: getCustomCssUrl(),
   translations: editorTranslations,
   sidebarPosition: 'left',
+  contentDefaults,
+  advancedPermissions,
 }
 
 export default function BeefreeEditor() {
   const [token, setToken] = useState<IToken | null>(null)
   const [error, setError] = useState<string | null>(null)
 
-  const { id } = useBuilder(config)
+  const { id, load } = useBuilder(config)
+
+  const handleLoad = useCallback(
+    (page: IEntityContentJson['page']) => {
+      if (ensureContentAreaAlign(page)) {
+        void load({ page, comments: {} })
+      }
+    },
+    [load],
+  )
 
   useEffect(() => {
     async function fetchToken() {
@@ -92,7 +100,7 @@ export default function BeefreeEditor() {
         token={token}
         template={BLANK_TEMPLATE}
         height="100vh"
-        onLoad={() => console.log('Builder is ready')}
+        onLoad={handleLoad}
         onSave={(pageJson, pageHtml) => {
           console.log('Saved!', { pageJson, pageHtml })
         }}
