@@ -6,7 +6,4 @@ export const sidebarTranslations: NonNullable<IBeeConfig['translations']> = {
     structure: 'Rows',
     body: 'Styles',
   },
-  'widget-groups': {
-    'page-options': 'Email styles',
-  },
 }
