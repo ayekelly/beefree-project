@@ -2,9 +2,20 @@
   /* Brand palette — adjust as you walk through changes */
   --brand-primary: #007c89;
   --brand-text: #241c15;
-  --brand-muted: #6b7280;
-  --brand-surface: #ffffff;
+  --brand-grey: #6b7280;
+  --brand-white: #ffffff;
   --brand-border: #e5e4e7;
+
+  /* Sidebar */
+  --sidebar-width: 320px;
+  --sidebar-bg: var(--brand-white);
+  --sidebar-border: var(--brand-border);
+
+  /* Sidebar tabs (Content / Rows / Settings) */
+  --tab-text: var(--brand-grey);
+  --tab-text-active: var(--brand-text);
+  --tab-indicator: var(--brand-primary);
+  --tab-bg-hover: #f6f6f4;
 
   /* Beefree SDK theme variables (official example pattern) */
   --custom-brand-primary-color: var(--brand-primary) !important;

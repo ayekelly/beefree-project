@@ -4,10 +4,6 @@
   height: 100vh;
 }
 
-.beefree-toolbar {
-  display: none;
-}
-
 .beefree-status {
   display: flex;
   flex-direction: column;

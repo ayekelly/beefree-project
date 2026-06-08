@@ -22,6 +22,7 @@ const config: IBeeConfig = {
   container: 'beefree-sdk-builder',
   language: 'en-US',
   customCss: getCustomCssUrl(),
+  sidebarPosition: 'left',
 }
 
 export default function BeefreeEditor() {
@@ -76,18 +77,6 @@ export default function BeefreeEditor() {
 
   return (
     <div className="beefree-editor">
-      {/* Temporary dev toolbar — not styled by customCss. Remove once Beefree's topbar--cs is styled. */}
-      <div className="beefree-toolbar">
-        <button type="button" onClick={() => preview()}>
-          Preview
-        </button>
-        <button type="button" onClick={() => save()}>
-          Save
-        </button>
-        <button type="button" onClick={() => saveAsTemplate()}>
-          Save as Template
-        </button>
-      </div>
       <Builder
         id={id}
         token={token}

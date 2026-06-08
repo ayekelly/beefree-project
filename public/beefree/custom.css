@@ -1,4 +1,6 @@
 @import url('./tokens.css');
+@import url('./topbar.css');
+@import url('./sidebar.css');
 
 /*
   Rules below target Beefree editor chrome only.

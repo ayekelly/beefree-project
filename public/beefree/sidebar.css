@@ -1,0 +1,38 @@
+/*
+  Sidebar and tab container custom styles — target only --cs suffixed selectors.
+  https://docs.beefree.io/beefree-sdk/other-customizations/appearance/custom-css
+*/
+
+/* --- Base sidebar --- */
+
+body.bee--cs .sidebar--cs {
+  background: var(--sidebar-bg) !important;
+  border-right: 1px solid var(--sidebar-border) !important;
+}
+
+/* --- Sidebar tab strip (bee-tab-container equivalent) --- */
+
+body.bee--cs [class*='TabLabel'] {
+  color: var(--tab-text) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  padding: 12px 16px !important;
+  cursor: pointer !important;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease !important;
+}
+
+body.bee--cs [class*='TabLabel']:hover {
+  color: var(--tab-text-active) !important;
+  background: var(--tab-bg-hover) !important;
+}
+
+body.bee--cs [class*='TabLabel'].active--cs,
+body.bee--cs [class*='TabLabel'][class*='active'] {
+  color: var(--tab-text-active) !important;
+  border-bottom-color: var(--tab-indicator) !important;
+  background: transparent !important;
+}
