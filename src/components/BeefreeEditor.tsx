@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   Builder,
   useBuilder,
@@ -13,7 +13,8 @@ import { blockTranslations } from '../beefree/blockConfig'
 import { contentDefaults, advancedPermissions } from '../beefree/settingsConfig'
 import { BLANK_TEMPLATE, ensureContentAreaAlign } from '../beefree/defaultTemplate'
 import { fetchExportHtml } from '../beefree/exportHtml'
-import ExportBar from './ExportBar'
+import { loadSavedTemplate, saveTemplate } from '../beefree/templateStorage'
+import ExportBar, { type SaveStatus } from './ExportBar'
 import ExportHtmlModal from './ExportHtmlModal'
 import './BeefreeEditor.css'
 
@@ -24,6 +25,8 @@ const editorTranslations = {
 }
 
 const UID = 'demo-user'
+const AUTOSAVE_DEBOUNCE_MS = 1500
+const SAVE_STATUS_CLEAR_MS = 2000
 
 const config: IBeeConfig = {
   uid: UID,
@@ -38,15 +41,23 @@ const config: IBeeConfig = {
 }
 
 export default function BeefreeEditor() {
+  const [initialTemplate] = useState(() => loadSavedTemplate() ?? BLANK_TEMPLATE)
   const [token, setToken] = useState<IToken | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [templateJson, setTemplateJson] = useState<IEntityContentJson>(BLANK_TEMPLATE)
+  const [templateJson, setTemplateJson] = useState<IEntityContentJson>(initialTemplate)
+  const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle')
   const [exportHtml, setExportHtml] = useState('')
   const [exportError, setExportError] = useState<string | null>(null)
   const [exportModalOpen, setExportModalOpen] = useState(false)
   const [exporting, setExporting] = useState(false)
 
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const { id, load } = useBuilder(config)
+
+  const persistTemplate = useCallback((parsed: IEntityContentJson, status: SaveStatus) => {
+    saveTemplate(parsed)
+    setSaveStatus(status)
+  }, [])
 
   const handleLoad = useCallback(
     (page: IEntityContentJson['page']) => {
@@ -58,9 +69,29 @@ export default function BeefreeEditor() {
     [load],
   )
 
-  const handleChange = useCallback((json: string) => {
-    setTemplateJson(JSON.parse(json) as IEntityContentJson)
-  }, [])
+  const handleChange = useCallback(
+    (json: string) => {
+      const parsed = JSON.parse(json) as IEntityContentJson
+      setTemplateJson(parsed)
+
+      if (debounceRef.current) clearTimeout(debounceRef.current)
+      debounceRef.current = setTimeout(() => {
+        persistTemplate(parsed, 'autosaved')
+      }, AUTOSAVE_DEBOUNCE_MS)
+    },
+    [persistTemplate],
+  )
+
+  const handleSave = useCallback(
+    (pageJson: string) => {
+      if (debounceRef.current) clearTimeout(debounceRef.current)
+
+      const parsed = JSON.parse(pageJson) as IEntityContentJson
+      setTemplateJson(parsed)
+      persistTemplate(parsed, 'saved')
+    },
+    [persistTemplate],
+  )
 
   const handleExport = useCallback(async () => {
     setExporting(true)
@@ -83,6 +114,19 @@ export default function BeefreeEditor() {
     setExportModalOpen(false)
     setExportError(null)
   }, [])
+
+  useEffect(() => {
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (saveStatus === 'idle') return
+
+    const timer = setTimeout(() => setSaveStatus('idle'), SAVE_STATUS_CLEAR_MS)
+    return () => clearTimeout(timer)
+  }, [saveStatus])
 
   useEffect(() => {
     async function fetchToken() {
@@ -130,18 +174,20 @@ export default function BeefreeEditor() {
 
   return (
     <div className="beefree-editor">
-      <ExportBar onExport={() => void handleExport()} exporting={exporting} />
+      <ExportBar
+        onExport={() => void handleExport()}
+        exporting={exporting}
+        saveStatus={saveStatus}
+      />
       <div className="beefree-editor__builder">
         <Builder
           id={id}
           token={token}
-          template={BLANK_TEMPLATE}
+          template={initialTemplate}
           height="100%"
           onLoad={handleLoad}
           onChange={handleChange}
-          onSave={(pageJson, pageHtml) => {
-            console.log('Saved!', { pageJson, pageHtml })
-          }}
+          onSave={handleSave}
           onSaveAsTemplate={(pageJson) => {
             console.log('Template saved!', pageJson)
           }}
