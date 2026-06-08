@@ -1,5 +1,8 @@
 :root {
-  --export-bar-height: 44px;
+  --export-bar-height: 52px;
+  --export-bar-bg: #241c15;
+  --export-bar-btn-bg: #333333;
+  --export-bar-btn-hover: #404040;
 }
 
 .export-bar {
@@ -9,8 +12,8 @@
   flex-shrink: 0;
   height: var(--export-bar-height);
   padding: 0 16px;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e4e7;
+  background: var(--export-bar-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   box-sizing: border-box;
 }
 
@@ -21,19 +24,20 @@
 
 .export-bar__btn {
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   font-size: 14px;
   font-weight: 500;
   padding: 8px 16px;
   cursor: pointer;
   line-height: 1.25;
   font-family: inherit;
-  background: #007c89;
+  background: var(--export-bar-btn-bg);
   color: #ffffff;
+  box-shadow: none;
 }
 
 .export-bar__btn:hover:not(:disabled) {
-  filter: brightness(0.92);
+  background: var(--export-bar-btn-hover);
 }
 
 .export-bar__btn:disabled {
