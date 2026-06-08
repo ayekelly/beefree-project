@@ -7,7 +7,14 @@ import {
   type IBeeConfig,
 } from '@beefree.io/react-email-builder'
 import { getCustomCssUrl } from '../beefree/customCss'
+import { sidebarTranslations } from '../beefree/sidebarConfig'
+import { topbarTranslations } from '../beefree/topbarConfig'
 import './BeefreeEditor.css'
+
+const editorTranslations = {
+  ...sidebarTranslations,
+  ...topbarTranslations,
+}
 
 const UID = 'demo-user'
 const AUTH_URL = 'http://localhost:3001/proxy/bee-auth'
@@ -22,6 +29,7 @@ const config: IBeeConfig = {
   container: 'beefree-sdk-builder',
   language: 'en-US',
   customCss: getCustomCssUrl(),
+  translations: editorTranslations,
   sidebarPosition: 'left',
 }
 

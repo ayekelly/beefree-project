@@ -1,14 +1,154 @@
-@import url('./tokens.css');
-@import url('./topbar.css');
-@import url('./sidebar.css');
+/* Bundled for Beefree iframe — do not @import (blocked by ORB cross-origin). */
+/* Source files: public/beefree/{tokens,sidebar}.css — run: npm run beefree:css */
 
+/* ── tokens.css ── */
+:root {
+  /* ── Color primitives ── */
+  --color-teal: #007c89;
+  --color-charcoal: #241c15;
+  --color-grey-mid: #6b7280;
+  --color-grey-dark: #333333;
+  --color-grey-soft: #e5e4e7;
+  --color-grey-light: #f8f8f8;
+  --color-grey-warm: #f6f6f4;
+  --color-white: #ffffff;
+
+  /* ── Layout ── */
+  --sidebar-rail-width: 70px;
+  --sidebar-panel-width: 300px;
+  --sidebar-width: calc(var(--sidebar-rail-width) + var(--sidebar-panel-width));
+  --tab-height: 84px;
+  --tab-radius: 8px;
+
+  /* ── Semantic tokens ── */
+  --sidebar-rail-bg: var(--color-grey-light);
+  --sidebar-panel-bg: var(--color-white);
+  --tab-inactive-text: var(--color-grey-dark);
+  --tab-inactive-icon: var(--color-grey-dark);
+  --tab-active-text: var(--color-teal);
+  --tab-active-icon: var(--color-teal);
+  --tab-active-bg: var(--color-white);
+  --tab-hover-bg: var(--color-grey-warm);
+
+  /* Beefree SDK theme variables (official example pattern) */
+  --custom-brand-primary-color: var(--color-teal) !important;
+  --custom-brand-secondary-color: var(--color-teal) !important;
+}
+
+/* ── sidebar.css ── */
 /*
-  Rules below target Beefree editor chrome only.
-  Use --cs suffixed selectors per docs:
+  Sidebar vertical tab rail — stable --cs selectors from live DOM inspection.
   https://docs.beefree.io/beefree-sdk/other-customizations/appearance/custom-css
 */
 
-/* Verification rule — remove once styling is confirmed working */
-body.bee--cs .topbar--cs {
-  outline: 2px dashed var(--brand-primary);
+/* --- Sidebar shell --- */
+
+body.bee--cs #sdk-sidebar.widget-bar--cs,
+body.bee--cs .widget-bar--cs {
+  width: var(--sidebar-width) !important;
+  min-width: var(--sidebar-width) !important;
+  max-width: var(--sidebar-width) !important;
+  background: var(--sidebar-rail-bg) !important;
+}
+
+/* --- Tabs layout: vertical rail left, panel right --- */
+
+body.bee--cs .widget-bar--cs .tabs--cs {
+  display: flex !important;
+  flex-direction: row !important;
+  height: 100% !important;
+}
+
+body.bee--cs .tabs__tablabels--cs {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  align-self: flex-start !important;
+  width: var(--sidebar-rail-width) !important;
+  flex: 0 0 auto !important;
+  height: auto !important;
+  background: var(--sidebar-rail-bg) !important;
+}
+
+body.bee--cs .widget-bar__scroll-container--cs {
+  flex: 1 1 auto !important;
+  width: var(--sidebar-panel-width) !important;
+  min-width: var(--sidebar-panel-width) !important;
+  background: var(--sidebar-panel-bg) !important;
+  overflow-y: auto !important;
+}
+
+/* --- Tab boxes: 70 x 84 px (fixed size, no stretch) --- */
+
+body.bee--cs .tabs__tablabel--cs {
+  width: var(--sidebar-rail-width) !important;
+  height: var(--tab-height) !important;
+  min-height: var(--tab-height) !important;
+  max-height: var(--tab-height) !important;
+  flex: 0 0 var(--tab-height) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  padding: 8px 2px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--tab-inactive-text) !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  transition: color 0.15s ease, background 0.15s ease !important;
+}
+
+body.bee--cs .tabs__tablabel--cs svg,
+body.bee--cs .tabs__tablabel--cs svg path {
+  fill: var(--tab-inactive-icon) !important;
+}
+
+body.bee--cs .tabs__tablabel--cs .tabs__iconwrapper,
+body.bee--cs .tabs__tablabel--cs [class*='tabIconWrapper'] {
+  flex-shrink: 0 !important;
+}
+
+body.bee--cs .tabs__tablabel--cs > span:not(.tabs__iconwrapper):not([class*='tabIconWrapper']) {
+  display: block !important;
+  max-width: none !important;
+  width: auto !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  -webkit-line-clamp: unset !important;
+  white-space: normal !important;
+  text-transform: none !important;
+}
+
+body.bee--cs .tabs__tablabel--cs,
+body.bee--cs .tabs__tablabel--cs * {
+  text-transform: none !important;
+}
+
+/* --- Hover --- */
+
+body.bee--cs .tabs__tablabel--cs:not([class*='activeTab']):hover {
+  background: var(--tab-hover-bg) !important;
+}
+
+/* --- Active state --- */
+
+body.bee--cs .tabs__tablabel--cs[class*='activeTab'] {
+  background: var(--tab-active-bg) !important;
+  color: var(--tab-active-text) !important;
+  border-radius: var(--tab-radius) 0 0 var(--tab-radius) !important;
+  box-shadow: -1px 0 4px rgba(0, 0, 0, 0.06) !important;
+}
+
+body.bee--cs .tabs__tablabel--cs[class*='activeTab'] svg,
+body.bee--cs .tabs__tablabel--cs[class*='activeTab'] svg path {
+  fill: var(--tab-active-icon) !important;
 }

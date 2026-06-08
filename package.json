@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "beefree:css": "node scripts/bundle-beefree-css.mjs",
+    "dev": "npm run beefree:css && vite",
     "proxy": "node proxy-server.js",
-    "dev:all": "concurrently \"npm run proxy\" \"npm run dev\"",
+    "dev:all": "npm run beefree:css && concurrently \"npm run proxy\" \"vite\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -31,6 +32,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
+    "playwright": "^1.49.1",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12"
