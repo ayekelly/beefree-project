@@ -6,6 +6,7 @@ import {
   type IToken,
   type IBeeConfig,
 } from '@beefree.io/react-email-builder'
+import { getCustomCssUrl } from '../beefree/customCss'
 import './BeefreeEditor.css'
 
 const UID = 'demo-user'
@@ -20,13 +21,14 @@ const config: IBeeConfig = {
   uid: UID,
   container: 'beefree-sdk-builder',
   language: 'en-US',
+  customCss: getCustomCssUrl(),
 }
 
 export default function BeefreeEditor() {
   const [token, setToken] = useState<IToken | null>(null)
   const [error, setError] = useState<string | null>(null)
 
-  const { id, save, preview, saveAsTemplate } = useBuilder(config)
+  const { id } = useBuilder(config)
 
   useEffect(() => {
     async function fetchToken() {
@@ -74,6 +76,7 @@ export default function BeefreeEditor() {
 
   return (
     <div className="beefree-editor">
+      {/* Temporary dev toolbar — not styled by customCss. Remove once Beefree's topbar--cs is styled. */}
       <div className="beefree-toolbar">
         <button type="button" onClick={() => preview()}>
           Preview
@@ -89,7 +92,7 @@ export default function BeefreeEditor() {
         id={id}
         token={token}
         template={BLANK_TEMPLATE}
-        height="calc(100vh - 56px)"
+        height="100vh"
         onLoad={() => console.log('Builder is ready')}
         onSave={(pageJson, pageHtml) => {
           console.log('Saved!', { pageJson, pageHtml })

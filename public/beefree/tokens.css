@@ -1,0 +1,12 @@
+:root {
+  /* Brand palette — adjust as you walk through changes */
+  --brand-primary: #007c89;
+  --brand-text: #241c15;
+  --brand-muted: #6b7280;
+  --brand-surface: #ffffff;
+  --brand-border: #e5e4e7;
+
+  /* Beefree SDK theme variables (official example pattern) */
+  --custom-brand-primary-color: var(--brand-primary) !important;
+  --custom-brand-secondary-color: var(--brand-primary) !important;
+}

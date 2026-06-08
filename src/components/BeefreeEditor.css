@@ -5,25 +5,7 @@
 }
 
 .beefree-toolbar {
-  display: flex;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e5e4e7;
-  background: #fff;
-}
-
-.beefree-toolbar button {
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
-  padding: 0.4rem 0.75rem;
-  font-size: 0.875rem;
-  font-family: inherit;
-  background: #fff;
-  cursor: pointer;
-}
-
-.beefree-toolbar button:hover {
-  background: #f3f4f6;
+  display: none;
 }
 
 .beefree-status {
@@ -55,21 +37,6 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .beefree-toolbar {
-    background: #1f2937;
-    border-bottom-color: #374151;
-  }
-
-  .beefree-toolbar button {
-    background: #374151;
-    border-color: #4b5563;
-    color: #f3f4f6;
-  }
-
-  .beefree-toolbar button:hover {
-    background: #4b5563;
-  }
-
   .beefree-status code {
     background: rgba(255, 255, 255, 0.1);
   }

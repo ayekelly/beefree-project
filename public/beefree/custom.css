@@ -1,0 +1,12 @@
+@import url('./tokens.css');
+
+/*
+  Rules below target Beefree editor chrome only.
+  Use --cs suffixed selectors per docs:
+  https://docs.beefree.io/beefree-sdk/other-customizations/appearance/custom-css
+*/
+
+/* Verification rule — remove once styling is confirmed working */
+body.bee--cs .topbar--cs {
+  outline: 2px dashed var(--brand-primary);
+}
