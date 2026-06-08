@@ -31,14 +31,15 @@
   --block-tile-size: 90px;
   --block-tile-gap: 10px;
   --block-tile-grid-padding: 16px;
-  --block-tile-inner-gap: 8px;
-  --block-tile-padding: 12px 8px;
-  --block-tile-icon-size: 20px;
+  --block-tile-inner-gap: 6px;
+  --block-tile-padding: 6px 4px;
+  --block-tile-icon-size: 24px;
   --block-tile-bg: var(--color-white);
   --block-tile-border-width: 1px;
   --block-tile-border-color: #dedede;
   --block-tile-border-radius: 4px;
-  --block-tile-label-size: 12px;
+  --block-tile-label-size: 13px;
+  --block-tile-label-line-height: 1.35;
   --block-tile-label-color: var(--color-charcoal);
   --block-tile-hover-border-color: #c8c8c8;
 

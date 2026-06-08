@@ -67,9 +67,10 @@ body.bee--cs .sidebar-draggable-text--cs {
   color: var(--block-tile-label-color) !important;
   font-size: var(--block-tile-label-size) !important;
   font-weight: 400 !important;
-  line-height: 1.2 !important;
+  line-height: var(--block-tile-label-line-height) !important;
   text-align: center !important;
   text-transform: capitalize !important;
+  overflow: visible !important;
   cursor: grab !important;
   transition: border-color 0.15s ease !important;
 }
@@ -107,8 +108,15 @@ body.bee--cs .sidebar-draggable-icons--cs .image-drag,
 body.bee--cs .sidebar-draggable-menu--cs .image-drag,
 body.bee--cs .sidebar-draggable-carousel--cs .image-drag,
 body.bee--cs .sidebar-draggable-text--cs .image-drag {
+  display: block !important;
   flex-shrink: 0 !important;
-  margin: 0 !important;
+  align-self: center !important;
+  width: var(--block-tile-icon-size) !important;
+  min-width: var(--block-tile-icon-size) !important;
+  max-width: var(--block-tile-icon-size) !important;
+  height: var(--block-tile-icon-size) !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
 }
 
 body.bee--cs .sidebar-draggable-heading--cs *,
@@ -128,4 +136,62 @@ body.bee--cs .sidebar-draggable-carousel--cs *,
 body.bee--cs .sidebar-draggable-text--cs * {
   text-transform: capitalize !important;
   color: var(--block-tile-label-color) !important;
+}
+
+/* --- Tile labels: prevent descender clipping --- */
+
+body.bee--cs .sidebar-draggable-heading--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-paragraph--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-list--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-image--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-button--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-divider--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-spacer--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-social--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-html--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-video--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-form--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-icons--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-menu--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-carousel--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-text--cs > *:not(.image-drag),
+body.bee--cs .sidebar-draggable-heading--cs .widget__label,
+body.bee--cs .sidebar-draggable-paragraph--cs .widget__label,
+body.bee--cs .sidebar-draggable-list--cs .widget__label,
+body.bee--cs .sidebar-draggable-image--cs .widget__label,
+body.bee--cs .sidebar-draggable-button--cs .widget__label,
+body.bee--cs .sidebar-draggable-divider--cs .widget__label,
+body.bee--cs .sidebar-draggable-spacer--cs .widget__label,
+body.bee--cs .sidebar-draggable-social--cs .widget__label,
+body.bee--cs .sidebar-draggable-html--cs .widget__label,
+body.bee--cs .sidebar-draggable-video--cs .widget__label,
+body.bee--cs .sidebar-draggable-form--cs .widget__label,
+body.bee--cs .sidebar-draggable-icons--cs .widget__label,
+body.bee--cs .sidebar-draggable-menu--cs .widget__label,
+body.bee--cs .sidebar-draggable-carousel--cs .widget__label,
+body.bee--cs .sidebar-draggable-text--cs .widget__label,
+body.bee--cs .sidebar-draggable-heading--cs [class*='widget__label'],
+body.bee--cs .sidebar-draggable-paragraph--cs [class*='widget__label'],
+body.bee--cs .sidebar-draggable-list--cs [class*='widget__label'],
+body.bee--cs .sidebar-draggable-image--cs [class*='widget__label'],
+body.bee--cs .sidebar-draggable-button--cs [class*='widget__label'],
+body.bee--cs .sidebar-draggable-divider--cs [class*='widget__label'],
+body.bee--cs .sidebar-draggable-spacer--cs [class*='widget__label'],
+body.bee--cs .sidebar-draggable-social--cs [class*='widget__label'],
+body.bee--cs .sidebar-draggable-html--cs [class*='widget__label'],
+body.bee--cs .sidebar-draggable-video--cs [class*='widget__label'],
+body.bee--cs .sidebar-draggable-form--cs [class*='widget__label'],
+body.bee--cs .sidebar-draggable-icons--cs [class*='widget__label'],
+body.bee--cs .sidebar-draggable-menu--cs [class*='widget__label'],
+body.bee--cs .sidebar-draggable-carousel--cs [class*='widget__label'],
+body.bee--cs .sidebar-draggable-text--cs [class*='widget__label'] {
+  display: block !important;
+  width: 100% !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  -webkit-line-clamp: unset !important;
+  line-height: var(--block-tile-label-line-height) !important;
+  text-align: center !important;
+  max-height: none !important;
+  height: auto !important;
 }
