@@ -6,3 +6,8 @@
 body.bee--cs .topbar-structure-button--cs {
   display: none !important;
 }
+
+body.bee--cs .topbar-actions--cs [role='menu'] .dropdown-menu-item--cs:nth-child(2),
+body.bee--cs .topbar-actions--cs [role='menu'] .dropdown-menu-item--cs:nth-child(3) {
+  display: none !important;
+}
