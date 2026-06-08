@@ -1,7 +1,15 @@
 /*
-  Block palette tiles — Mailchimp-style grid (94×94, light border, title case labels).
+  Block palette tiles — Mailchimp-style grid (airy 3-column layout).
   https://docs.beefree.io/beefree-sdk/other-customizations/appearance/custom-css
 */
+
+/* --- Blocks tab panel inset --- */
+
+body.bee--cs #tab__content__content,
+body.bee--cs #tab__content {
+  padding: 0 !important;
+  background: var(--sidebar-panel-bg) !important;
+}
 
 /* --- Tile grid layout --- */
 
@@ -15,6 +23,7 @@ body.bee--cs #tab__content__content .modules-wrapper {
   padding: var(--block-tile-grid-padding) !important;
   align-content: flex-start !important;
   align-items: flex-start !important;
+  justify-content: center !important;
   width: 100% !important;
   box-sizing: border-box !important;
 }
@@ -48,8 +57,8 @@ body.bee--cs .sidebar-draggable-text--cs {
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 6px !important;
-  padding: 10px 6px !important;
+  gap: var(--block-tile-inner-gap) !important;
+  padding: var(--block-tile-padding) !important;
   margin: 0 !important;
   background: var(--block-tile-bg) !important;
   border: var(--block-tile-border-width) solid var(--block-tile-border-color) !important;

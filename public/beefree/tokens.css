@@ -11,7 +11,7 @@
 
   /* ── Layout ── */
   --sidebar-rail-width: 70px;
-  --sidebar-panel-width: 300px;
+  --sidebar-panel-width: 330px;
   --sidebar-width: calc(var(--sidebar-rail-width) + var(--sidebar-panel-width));
   --tab-height: 84px;
   --tab-radius: 8px;
@@ -28,13 +28,16 @@
   --tab-hover-bg: var(--color-grey-warm);
 
   /* Block palette tiles */
-  --block-tile-size: 94px;
-  --block-tile-gap: 6px;
-  --block-tile-grid-padding: 3px;
+  --block-tile-size: 90px;
+  --block-tile-gap: 10px;
+  --block-tile-grid-padding: 16px;
+  --block-tile-inner-gap: 8px;
+  --block-tile-padding: 12px 8px;
+  --block-tile-icon-size: 20px;
   --block-tile-bg: var(--color-white);
   --block-tile-border-width: 1px;
   --block-tile-border-color: #dedede;
-  --block-tile-border-radius: 2px;
+  --block-tile-border-radius: 4px;
   --block-tile-label-size: 12px;
   --block-tile-label-color: var(--color-charcoal);
   --block-tile-hover-border-color: #c8c8c8;

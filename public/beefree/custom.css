@@ -15,7 +15,7 @@
 
   /* ── Layout ── */
   --sidebar-rail-width: 70px;
-  --sidebar-panel-width: 300px;
+  --sidebar-panel-width: 330px;
   --sidebar-width: calc(var(--sidebar-rail-width) + var(--sidebar-panel-width));
   --tab-height: 84px;
   --tab-radius: 8px;
@@ -32,13 +32,16 @@
   --tab-hover-bg: var(--color-grey-warm);
 
   /* Block palette tiles */
-  --block-tile-size: 94px;
-  --block-tile-gap: 6px;
-  --block-tile-grid-padding: 3px;
+  --block-tile-size: 90px;
+  --block-tile-gap: 10px;
+  --block-tile-grid-padding: 16px;
+  --block-tile-inner-gap: 8px;
+  --block-tile-padding: 12px 8px;
+  --block-tile-icon-size: 20px;
   --block-tile-bg: var(--color-white);
   --block-tile-border-width: 1px;
   --block-tile-border-color: #dedede;
-  --block-tile-border-radius: 2px;
+  --block-tile-border-radius: 4px;
   --block-tile-label-size: 12px;
   --block-tile-label-color: var(--color-charcoal);
   --block-tile-hover-border-color: #c8c8c8;
@@ -151,9 +154,32 @@ body.bee--cs .widget-bar__scroll-container--cs {
   flex: 1 1 auto !important;
   width: var(--sidebar-panel-width) !important;
   min-width: var(--sidebar-panel-width) !important;
+  max-width: var(--sidebar-panel-width) !important;
   background: var(--sidebar-panel-bg) !important;
   overflow-y: auto !important;
   transition: width 0.2s ease, min-width 0.2s ease, opacity 0.2s ease !important;
+}
+
+/* react-custom-scrollbars — allow panel content to use full 330px width */
+body.bee--cs .widget-bar__scroll-container--cs .rc-scrollbars-container,
+body.bee--cs .widget-bar__scroll-container--cs.scrollable__panel--cs,
+body.bee--cs .widget-bar__scroll-container--cs [class*='ScrollablePanel_scrollbar'] {
+  width: var(--sidebar-panel-width) !important;
+  min-width: var(--sidebar-panel-width) !important;
+  max-width: var(--sidebar-panel-width) !important;
+}
+
+body.bee--cs .widget-bar__scroll-container--cs .rc-scrollbars-view {
+  width: var(--sidebar-panel-width) !important;
+  min-width: var(--sidebar-panel-width) !important;
+  max-width: var(--sidebar-panel-width) !important;
+  box-sizing: border-box !important;
+}
+
+body.bee--cs .widget-bar__scroll-container--cs .rc-scrollbars-view > * {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 /* --- Tab boxes: 70 x 84 px (fixed size, no stretch) --- */
@@ -283,9 +309,17 @@ body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(3)[class*='activ
 
 /* ── block-tiles.css ── */
 /*
-  Block palette tiles — Mailchimp-style grid (94×94, light border, title case labels).
+  Block palette tiles — Mailchimp-style grid (airy 3-column layout).
   https://docs.beefree.io/beefree-sdk/other-customizations/appearance/custom-css
 */
+
+/* --- Blocks tab panel inset --- */
+
+body.bee--cs #tab__content__content,
+body.bee--cs #tab__content {
+  padding: 0 !important;
+  background: var(--sidebar-panel-bg) !important;
+}
 
 /* --- Tile grid layout --- */
 
@@ -299,6 +333,7 @@ body.bee--cs #tab__content__content .modules-wrapper {
   padding: var(--block-tile-grid-padding) !important;
   align-content: flex-start !important;
   align-items: flex-start !important;
+  justify-content: center !important;
   width: 100% !important;
   box-sizing: border-box !important;
 }
@@ -416,8 +451,8 @@ body.bee--cs .sidebar-draggable-heading--cs .image-drag svg {
 }
 
 body.bee--cs .sidebar-draggable-heading--cs .image-drag {
-  width: 24px !important;
-  height: 24px !important;
+  width: var(--block-tile-icon-size) !important;
+  height: var(--block-tile-icon-size) !important;
   content: url('/icons/blocks/heading.svg') !important;
 }
 
@@ -426,8 +461,8 @@ body.bee--cs .sidebar-draggable-image--cs .image-drag svg {
 }
 
 body.bee--cs .sidebar-draggable-image--cs .image-drag {
-  width: 24px !important;
-  height: 24px !important;
+  width: var(--block-tile-icon-size) !important;
+  height: var(--block-tile-icon-size) !important;
   content: url('/icons/blocks/image.svg') !important;
 }
 
@@ -436,8 +471,8 @@ body.bee--cs .sidebar-draggable-button--cs .image-drag svg {
 }
 
 body.bee--cs .sidebar-draggable-button--cs .image-drag {
-  width: 24px !important;
-  height: 24px !important;
+  width: var(--block-tile-icon-size) !important;
+  height: var(--block-tile-icon-size) !important;
   content: url('/icons/blocks/button.svg') !important;
 }
 
@@ -446,8 +481,8 @@ body.bee--cs .sidebar-draggable-divider--cs .image-drag svg {
 }
 
 body.bee--cs .sidebar-draggable-divider--cs .image-drag {
-  width: 24px !important;
-  height: 24px !important;
+  width: var(--block-tile-icon-size) !important;
+  height: var(--block-tile-icon-size) !important;
   content: url('/icons/blocks/divider.svg') !important;
 }
 
@@ -456,8 +491,8 @@ body.bee--cs .sidebar-draggable-spacer--cs .image-drag svg {
 }
 
 body.bee--cs .sidebar-draggable-spacer--cs .image-drag {
-  width: 24px !important;
-  height: 24px !important;
+  width: var(--block-tile-icon-size) !important;
+  height: var(--block-tile-icon-size) !important;
   content: url('/icons/blocks/spacer.svg') !important;
 }
 
@@ -466,8 +501,8 @@ body.bee--cs .sidebar-draggable-social--cs .image-drag svg {
 }
 
 body.bee--cs .sidebar-draggable-social--cs .image-drag {
-  width: 24px !important;
-  height: 24px !important;
+  width: var(--block-tile-icon-size) !important;
+  height: var(--block-tile-icon-size) !important;
   content: url('/icons/blocks/social.svg') !important;
 }
 
@@ -476,8 +511,8 @@ body.bee--cs .sidebar-draggable-html--cs .image-drag svg {
 }
 
 body.bee--cs .sidebar-draggable-html--cs .image-drag {
-  width: 24px !important;
-  height: 24px !important;
+  width: var(--block-tile-icon-size) !important;
+  height: var(--block-tile-icon-size) !important;
   content: url('/icons/blocks/code.svg') !important;
 }
 
@@ -486,8 +521,8 @@ body.bee--cs .sidebar-draggable-video--cs .image-drag svg {
 }
 
 body.bee--cs .sidebar-draggable-video--cs .image-drag {
-  width: 24px !important;
-  height: 24px !important;
+  width: var(--block-tile-icon-size) !important;
+  height: var(--block-tile-icon-size) !important;
   content: url('/icons/blocks/video.svg') !important;
 }
 
@@ -496,8 +531,8 @@ body.bee--cs .sidebar-draggable-text--cs .image-drag svg {
 }
 
 body.bee--cs .sidebar-draggable-text--cs .image-drag {
-  width: 24px !important;
-  height: 24px !important;
+  width: var(--block-tile-icon-size) !important;
+  height: var(--block-tile-icon-size) !important;
   content: url('/icons/blocks/paragraph.svg') !important;
 }
 
