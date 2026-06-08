@@ -61,11 +61,11 @@ This follows the [Tracking Message Changes](https://docs.beefree.io/beefree-sdk/
 ┌─────────────────────────────────────────────────────────┐
 │  React app (Vite, localhost:5173)                       │
 │  ┌───────────────────────────────────────────────────┐  │
-│  │  ExportBar — Export HTML + save status              │  │
+│  │  ExportBar — Export HTML + save status            │  │
 │  ├───────────────────────────────────────────────────┤  │
-│  │  Beefree Builder (iframe)                           │  │
-│  │  • custom.css (bundled from public/beefree/)       │  │
-│  │  • SDK topbar (Save, Preview, Actions…)             │  │
+│  │  Beefree Builder (iframe)                         │  │
+│  │  • custom.css (bundled from public/beefree/)      │  │
+│  │  • SDK topbar (Save, Preview, Actions…)           │  │
 │  └───────────────────────────────────────────────────┘  │
 │         │ onChange / onSave          │ fetch            │
 │         ▼                            ▼                  │
