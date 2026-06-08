@@ -1,0 +1,42 @@
+:root {
+  --export-bar-height: 44px;
+}
+
+.export-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  height: var(--export-bar-height);
+  padding: 0 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e4e7;
+  box-sizing: border-box;
+}
+
+.export-bar__actions {
+  display: flex;
+  align-items: center;
+}
+
+.export-bar__btn {
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  cursor: pointer;
+  line-height: 1.25;
+  font-family: inherit;
+  background: #007c89;
+  color: #ffffff;
+}
+
+.export-bar__btn:hover:not(:disabled) {
+  filter: brightness(0.92);
+}
+
+.export-bar__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

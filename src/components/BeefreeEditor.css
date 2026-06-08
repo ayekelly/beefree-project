@@ -4,6 +4,11 @@
   height: 100vh;
 }
 
+.beefree-editor__builder {
+  flex: 1;
+  min-height: 0;
+}
+
 .beefree-status {
   display: flex;
   flex-direction: column;

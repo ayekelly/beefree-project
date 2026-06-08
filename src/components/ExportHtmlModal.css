@@ -1,0 +1,124 @@
+.export-modal {
+  border: none;
+  padding: 0;
+  background: transparent;
+  max-width: none;
+  max-height: none;
+  width: 100%;
+  height: 100%;
+}
+
+.export-modal::backdrop {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.export-modal__panel {
+  display: flex;
+  flex-direction: column;
+  width: min(900px, calc(100vw - 48px));
+  max-height: calc(100vh - 96px);
+  margin: 48px auto;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.export-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e4e7;
+}
+
+.export-modal__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #241c15;
+}
+
+.export-modal__close {
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  line-height: 1;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.export-modal__close:hover {
+  color: #374151;
+}
+
+.export-modal__body {
+  flex: 1;
+  min-height: 0;
+  padding: 16px 20px;
+}
+
+.export-modal__error {
+  margin: 0;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+}
+
+.export-modal__code {
+  display: block;
+  width: 100%;
+  height: min(480px, calc(100vh - 260px));
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #e5e4e7;
+  border-radius: 4px;
+  resize: vertical;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #374151;
+  background: #f8f8f8;
+  box-sizing: border-box;
+}
+
+.export-modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px 20px;
+  border-top: 1px solid #e5e4e7;
+}
+
+.export-modal__btn {
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.export-modal__btn--secondary {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.export-modal__btn--secondary:hover {
+  background: #d1d5db;
+}
+
+.export-modal__btn--primary {
+  background: #007c89;
+  color: #ffffff;
+}
+
+.export-modal__btn--primary:hover {
+  filter: brightness(0.92);
+}
