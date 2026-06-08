@@ -18,7 +18,10 @@ body.bee--cs .widget-bar--cs {
 body.bee--cs .widget-bar--cs .tabs--cs {
   display: flex !important;
   flex-direction: row !important;
-  height: 100% !important;
+  height: calc(100% - var(--stage-toolbar-height)) !important;
+  margin-top: var(--stage-toolbar-height) !important;
+  min-height: 0 !important;
+  box-sizing: border-box !important;
 }
 
 body.bee--cs .tabs__tablabels--cs {
@@ -29,6 +32,7 @@ body.bee--cs .tabs__tablabels--cs {
   width: var(--sidebar-rail-width) !important;
   flex: 0 0 auto !important;
   height: auto !important;
+  margin-top: 0 !important;
   background: var(--sidebar-rail-bg) !important;
 }
 

@@ -15,6 +15,7 @@
   --sidebar-width: calc(var(--sidebar-rail-width) + var(--sidebar-panel-width));
   --tab-height: 84px;
   --tab-radius: 8px;
+  --stage-toolbar-height: 48px;
 
   /* ── Semantic tokens ── */
   --sidebar-rail-bg: var(--color-grey-light);
