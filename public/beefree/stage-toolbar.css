@@ -31,36 +31,3 @@ body.bee--cs #sdk-stage > [class*='StageMode_wrapper'] {
   box-sizing: border-box !important;
   pointer-events: auto !important;
 }
-
-/* White toolbar row fill above the sidebar (rail + panel columns) */
-body.bee--cs #sdk-sidebar.widget-bar--cs {
-  position: relative !important;
-}
-
-body.bee--cs #sdk-sidebar.widget-bar--cs::before {
-  content: '' !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: var(--sidebar-rail-width) !important;
-  height: var(--stage-toolbar-height) !important;
-  background: var(--color-white) !important;
-  border-bottom: 1px solid var(--color-grey-soft) !important;
-  box-sizing: border-box !important;
-  z-index: 6 !important;
-  pointer-events: none !important;
-}
-
-body.bee--cs #sdk-sidebar.widget-bar--cs::after {
-  content: '' !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: var(--sidebar-rail-width) !important;
-  width: var(--sidebar-panel-width) !important;
-  height: var(--stage-toolbar-height) !important;
-  background: var(--color-white) !important;
-  border-bottom: 1px solid var(--color-grey-soft) !important;
-  box-sizing: border-box !important;
-  z-index: 6 !important;
-  pointer-events: none !important;
-}
