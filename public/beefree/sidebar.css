@@ -7,10 +7,39 @@
 
 body.bee--cs #sdk-sidebar.widget-bar--cs,
 body.bee--cs .widget-bar--cs {
+  background: var(--sidebar-rail-bg) !important;
+}
+
+/* Expanded: full rail + panel width */
+body.bee--cs #sdk-sidebar.widget-bar--cs:not(.sidebar--collapsed):not([class*='collapsedSidebar']),
+body.bee--cs .widget-bar--cs:not(.sidebar--collapsed):not([class*='collapsedSidebar']) {
   width: var(--sidebar-width) !important;
   min-width: var(--sidebar-width) !important;
   max-width: var(--sidebar-width) !important;
-  background: var(--sidebar-rail-bg) !important;
+}
+
+/* Collapsed: tab rail only — let Beefree native toggle shrink the sidebar */
+body.bee--cs #sdk-sidebar.widget-bar--cs.sidebar--collapsed,
+body.bee--cs #sdk-sidebar.widget-bar--cs[class*='collapsedSidebar'] {
+  width: var(--sidebar-rail-width) !important;
+  min-width: var(--sidebar-rail-width) !important;
+  max-width: var(--sidebar-rail-width) !important;
+}
+
+body.bee--cs #sdk-sidebar.widget-bar--cs.sidebar--collapsed .widget-bar__scroll-container--cs,
+body.bee--cs #sdk-sidebar.widget-bar--cs[class*='collapsedSidebar'] .widget-bar__scroll-container--cs {
+  flex: 0 0 0 !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Collapse handle — keep clickable above adjacent UI */
+body.bee--cs .sidebar-collapse-handle--cs {
+  z-index: 10 !important;
+  pointer-events: auto !important;
 }
 
 /* --- Tabs layout: vertical rail left, panel right --- */
@@ -38,6 +67,7 @@ body.bee--cs .widget-bar__scroll-container--cs {
   min-width: var(--sidebar-panel-width) !important;
   background: var(--sidebar-panel-bg) !important;
   overflow-y: auto !important;
+  transition: width 0.2s ease, min-width 0.2s ease, opacity 0.2s ease !important;
 }
 
 /* --- Tab boxes: 70 x 84 px (fixed size, no stretch) --- */

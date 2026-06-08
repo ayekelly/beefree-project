@@ -1,5 +1,5 @@
 /* Bundled for Beefree iframe — do not @import (blocked by ORB cross-origin). */
-/* Source files: public/beefree/{tokens,stage-toolbar,sidebar,tab-icons,block-icons}.css — run: npm run beefree:css */
+/* Source files: public/beefree/{tokens,stage-toolbar,sidebar,tab-icons,block-tiles,block-icons}.css — run: npm run beefree:css */
 
 /* ── tokens.css ── */
 :root {
@@ -30,6 +30,18 @@
   --tab-active-icon: var(--color-teal);
   --tab-active-bg: var(--color-white);
   --tab-hover-bg: var(--color-grey-warm);
+
+  /* Block palette tiles */
+  --block-tile-size: 94px;
+  --block-tile-gap: 6px;
+  --block-tile-grid-padding: 3px;
+  --block-tile-bg: var(--color-white);
+  --block-tile-border-width: 1px;
+  --block-tile-border-color: #dedede;
+  --block-tile-border-radius: 2px;
+  --block-tile-label-size: 12px;
+  --block-tile-label-color: var(--color-charcoal);
+  --block-tile-hover-border-color: #c8c8c8;
 
   /* Beefree SDK theme variables (official example pattern) */
   --custom-brand-primary-color: var(--color-teal) !important;
@@ -81,10 +93,39 @@ body.bee--cs #sdk-stage > [class*='StageMode_wrapper'] {
 
 body.bee--cs #sdk-sidebar.widget-bar--cs,
 body.bee--cs .widget-bar--cs {
+  background: var(--sidebar-rail-bg) !important;
+}
+
+/* Expanded: full rail + panel width */
+body.bee--cs #sdk-sidebar.widget-bar--cs:not(.sidebar--collapsed):not([class*='collapsedSidebar']),
+body.bee--cs .widget-bar--cs:not(.sidebar--collapsed):not([class*='collapsedSidebar']) {
   width: var(--sidebar-width) !important;
   min-width: var(--sidebar-width) !important;
   max-width: var(--sidebar-width) !important;
-  background: var(--sidebar-rail-bg) !important;
+}
+
+/* Collapsed: tab rail only — let Beefree native toggle shrink the sidebar */
+body.bee--cs #sdk-sidebar.widget-bar--cs.sidebar--collapsed,
+body.bee--cs #sdk-sidebar.widget-bar--cs[class*='collapsedSidebar'] {
+  width: var(--sidebar-rail-width) !important;
+  min-width: var(--sidebar-rail-width) !important;
+  max-width: var(--sidebar-rail-width) !important;
+}
+
+body.bee--cs #sdk-sidebar.widget-bar--cs.sidebar--collapsed .widget-bar__scroll-container--cs,
+body.bee--cs #sdk-sidebar.widget-bar--cs[class*='collapsedSidebar'] .widget-bar__scroll-container--cs {
+  flex: 0 0 0 !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Collapse handle — keep clickable above adjacent UI */
+body.bee--cs .sidebar-collapse-handle--cs {
+  z-index: 10 !important;
+  pointer-events: auto !important;
 }
 
 /* --- Tabs layout: vertical rail left, panel right --- */
@@ -112,6 +153,7 @@ body.bee--cs .widget-bar__scroll-container--cs {
   min-width: var(--sidebar-panel-width) !important;
   background: var(--sidebar-panel-bg) !important;
   overflow-y: auto !important;
+  transition: width 0.2s ease, min-width 0.2s ease, opacity 0.2s ease !important;
 }
 
 /* --- Tab boxes: 70 x 84 px (fixed size, no stretch) --- */
@@ -225,6 +267,130 @@ body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(1)[class*='activ
 body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2)[class*='activeTab'] .tabs__iconwrapper,
 body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2)[class*='activeTab'] [class*='tabIconWrapper'] {
   background-color: var(--tab-active-icon) !important;
+}
+
+/* ── block-tiles.css ── */
+/*
+  Block palette tiles — Mailchimp-style grid (94×94, light border, title case labels).
+  https://docs.beefree.io/beefree-sdk/other-customizations/appearance/custom-css
+*/
+
+/* --- Tile grid layout --- */
+
+body.bee--cs .modules-wrapper,
+body.bee--cs .tab-content--cs .modules-wrapper,
+body.bee--cs #tab__content__content .modules-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  gap: var(--block-tile-gap) !important;
+  padding: var(--block-tile-grid-padding) !important;
+  align-content: flex-start !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* --- Content block tiles (exclude row layout tiles) --- */
+
+body.bee--cs .sidebar-draggable-heading--cs,
+body.bee--cs .sidebar-draggable-paragraph--cs,
+body.bee--cs .sidebar-draggable-list--cs,
+body.bee--cs .sidebar-draggable-image--cs,
+body.bee--cs .sidebar-draggable-button--cs,
+body.bee--cs .sidebar-draggable-divider--cs,
+body.bee--cs .sidebar-draggable-spacer--cs,
+body.bee--cs .sidebar-draggable-social--cs,
+body.bee--cs .sidebar-draggable-html--cs,
+body.bee--cs .sidebar-draggable-video--cs,
+body.bee--cs .sidebar-draggable-form--cs,
+body.bee--cs .sidebar-draggable-icons--cs,
+body.bee--cs .sidebar-draggable-menu--cs,
+body.bee--cs .sidebar-draggable-carousel--cs,
+body.bee--cs .sidebar-draggable-text--cs {
+  width: var(--block-tile-size) !important;
+  height: var(--block-tile-size) !important;
+  min-width: var(--block-tile-size) !important;
+  min-height: var(--block-tile-size) !important;
+  max-width: var(--block-tile-size) !important;
+  max-height: var(--block-tile-size) !important;
+  flex: 0 0 var(--block-tile-size) !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  padding: 10px 6px !important;
+  margin: 0 !important;
+  background: var(--block-tile-bg) !important;
+  border: var(--block-tile-border-width) solid var(--block-tile-border-color) !important;
+  border-radius: var(--block-tile-border-radius) !important;
+  box-shadow: none !important;
+  color: var(--block-tile-label-color) !important;
+  font-size: var(--block-tile-label-size) !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  text-transform: capitalize !important;
+  cursor: grab !important;
+  transition: border-color 0.15s ease !important;
+}
+
+body.bee--cs .sidebar-draggable-heading--cs:hover,
+body.bee--cs .sidebar-draggable-paragraph--cs:hover,
+body.bee--cs .sidebar-draggable-list--cs:hover,
+body.bee--cs .sidebar-draggable-image--cs:hover,
+body.bee--cs .sidebar-draggable-button--cs:hover,
+body.bee--cs .sidebar-draggable-divider--cs:hover,
+body.bee--cs .sidebar-draggable-spacer--cs:hover,
+body.bee--cs .sidebar-draggable-social--cs:hover,
+body.bee--cs .sidebar-draggable-html--cs:hover,
+body.bee--cs .sidebar-draggable-video--cs:hover,
+body.bee--cs .sidebar-draggable-form--cs:hover,
+body.bee--cs .sidebar-draggable-icons--cs:hover,
+body.bee--cs .sidebar-draggable-menu--cs:hover,
+body.bee--cs .sidebar-draggable-carousel--cs:hover,
+body.bee--cs .sidebar-draggable-text--cs:hover {
+  border-color: var(--block-tile-hover-border-color) !important;
+}
+
+body.bee--cs .sidebar-draggable-heading--cs .image-drag,
+body.bee--cs .sidebar-draggable-paragraph--cs .image-drag,
+body.bee--cs .sidebar-draggable-list--cs .image-drag,
+body.bee--cs .sidebar-draggable-image--cs .image-drag,
+body.bee--cs .sidebar-draggable-button--cs .image-drag,
+body.bee--cs .sidebar-draggable-divider--cs .image-drag,
+body.bee--cs .sidebar-draggable-spacer--cs .image-drag,
+body.bee--cs .sidebar-draggable-social--cs .image-drag,
+body.bee--cs .sidebar-draggable-html--cs .image-drag,
+body.bee--cs .sidebar-draggable-video--cs .image-drag,
+body.bee--cs .sidebar-draggable-form--cs .image-drag,
+body.bee--cs .sidebar-draggable-icons--cs .image-drag,
+body.bee--cs .sidebar-draggable-menu--cs .image-drag,
+body.bee--cs .sidebar-draggable-carousel--cs .image-drag,
+body.bee--cs .sidebar-draggable-text--cs .image-drag {
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+}
+
+body.bee--cs .sidebar-draggable-heading--cs *,
+body.bee--cs .sidebar-draggable-paragraph--cs *,
+body.bee--cs .sidebar-draggable-list--cs *,
+body.bee--cs .sidebar-draggable-image--cs *,
+body.bee--cs .sidebar-draggable-button--cs *,
+body.bee--cs .sidebar-draggable-divider--cs *,
+body.bee--cs .sidebar-draggable-spacer--cs *,
+body.bee--cs .sidebar-draggable-social--cs *,
+body.bee--cs .sidebar-draggable-html--cs *,
+body.bee--cs .sidebar-draggable-video--cs *,
+body.bee--cs .sidebar-draggable-form--cs *,
+body.bee--cs .sidebar-draggable-icons--cs *,
+body.bee--cs .sidebar-draggable-menu--cs *,
+body.bee--cs .sidebar-draggable-carousel--cs *,
+body.bee--cs .sidebar-draggable-text--cs * {
+  text-transform: capitalize !important;
+  color: var(--block-tile-label-color) !important;
 }
 
 /* ── block-icons.css ── */

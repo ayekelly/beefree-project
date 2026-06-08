@@ -27,6 +27,18 @@
   --tab-active-bg: var(--color-white);
   --tab-hover-bg: var(--color-grey-warm);
 
+  /* Block palette tiles */
+  --block-tile-size: 94px;
+  --block-tile-gap: 6px;
+  --block-tile-grid-padding: 3px;
+  --block-tile-bg: var(--color-white);
+  --block-tile-border-width: 1px;
+  --block-tile-border-color: #dedede;
+  --block-tile-border-radius: 2px;
+  --block-tile-label-size: 12px;
+  --block-tile-label-color: var(--color-charcoal);
+  --block-tile-hover-border-color: #c8c8c8;
+
   /* Beefree SDK theme variables (official example pattern) */
   --custom-brand-primary-color: var(--color-teal) !important;
   --custom-brand-secondary-color: var(--color-teal) !important;
