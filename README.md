@@ -4,6 +4,20 @@ A React + Vite application that embeds the [Beefree SDK](https://docs.beefree.io
 
 This project was built as a hands-on integration exercise: authenticate securely, embed the official React wrapper, customize the builder experience, and wire up the core workflows a real product would need — save, export, and restore.
 
+## Screenshots
+
+### Editor overview
+
+Custom sidebar, block palette, stage toolbar, and host **Export HTML** bar above the SDK iframe.
+
+![Editor overview: customized Beefree builder UI](docs/screenshots/editor-overview.png)
+
+### HTML export
+
+Export uses the Content Services API; the modal supports copy and download.
+
+![Export HTML modal with rendered email HTML](docs/screenshots/export-modal.png)
+
 ---
 
 ## Features
@@ -178,6 +192,7 @@ public/
 proxy-server.js              # Auth + export proxy
 scripts/
 ├── bundle-beefree-css.mjs   # CSS bundler
+├── capture-readme-screenshots.mjs  # Playwright screenshots for README
 └── inspect-beefree-sidebar.mjs  # Playwright debug helper
 ```
 
