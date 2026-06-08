@@ -1,5 +1,5 @@
 /* Bundled for Beefree iframe — do not @import (blocked by ORB cross-origin). */
-/* Source files: public/beefree/{tokens,stage-toolbar,sidebar}.css — run: npm run beefree:css */
+/* Source files: public/beefree/{tokens,stage-toolbar,sidebar,tab-icons,block-icons}.css — run: npm run beefree:css */
 
 /* ── tokens.css ── */
 :root {
@@ -187,4 +187,138 @@ body.bee--cs .tabs__tablabel--cs[class*='activeTab'] {
 body.bee--cs .tabs__tablabel--cs[class*='activeTab'] svg,
 body.bee--cs .tabs__tablabel--cs[class*='activeTab'] svg path {
   fill: var(--tab-active-icon) !important;
+}
+
+/* ── tab-icons.css ── */
+/*
+  Sidebar tab rail icons (Blocks, Rows) — SVG via mask-image for active/inactive tinting.
+  Page tab keeps the default SDK SVG styled in sidebar.css.
+*/
+
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(1) .tabs__iconwrapper svg,
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(1) [class*='tabIconWrapper'] svg,
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2) .tabs__iconwrapper svg,
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2) [class*='tabIconWrapper'] svg {
+  visibility: hidden !important;
+}
+
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(1) .tabs__iconwrapper,
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(1) [class*='tabIconWrapper'] {
+  width: 24px !important;
+  height: 24px !important;
+  background-color: var(--tab-inactive-icon) !important;
+  -webkit-mask: url('/icons/tabs/blocks.svg') no-repeat center / contain !important;
+  mask: url('/icons/tabs/blocks.svg') no-repeat center / contain !important;
+}
+
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2) .tabs__iconwrapper,
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2) [class*='tabIconWrapper'] {
+  width: 24px !important;
+  height: 24px !important;
+  background-color: var(--tab-inactive-icon) !important;
+  -webkit-mask: url('/icons/tabs/rows.svg') no-repeat center / contain !important;
+  mask: url('/icons/tabs/rows.svg') no-repeat center / contain !important;
+}
+
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(1)[class*='activeTab'] .tabs__iconwrapper,
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(1)[class*='activeTab'] [class*='tabIconWrapper'],
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2)[class*='activeTab'] .tabs__iconwrapper,
+body.bee--cs .tabs__tablabels--cs .tabs__tablabel--cs:nth-child(2)[class*='activeTab'] [class*='tabIconWrapper'] {
+  background-color: var(--tab-active-icon) !important;
+}
+
+/* ── block-icons.css ── */
+/*
+  Block palette tile icons — hide SDK SVG, show hosted image (img src equivalent).
+  https://docs.beefree.io/beefree-sdk/other-customizations/appearance/custom-css
+*/
+
+body.bee--cs .sidebar-draggable-heading--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-heading--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/heading.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-image--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-image--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/image.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-button--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-button--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/button.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-divider--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-divider--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/divider.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-spacer--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-spacer--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/spacer.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-social--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-social--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/social.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-html--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-html--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/code.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-video--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-video--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/video.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-text--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-text--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/paragraph.svg') !important;
 }

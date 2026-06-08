@@ -9,11 +9,13 @@ import {
 import { getCustomCssUrl } from '../beefree/customCss'
 import { sidebarTranslations } from '../beefree/sidebarConfig'
 import { topbarTranslations } from '../beefree/topbarConfig'
+import { blockTranslations } from '../beefree/blockConfig'
 import './BeefreeEditor.css'
 
 const editorTranslations = {
   ...sidebarTranslations,
   ...topbarTranslations,
+  ...blockTranslations,
 }
 
 const UID = 'demo-user'

@@ -1,0 +1,94 @@
+/*
+  Block palette tile icons — hide SDK SVG, show hosted image (img src equivalent).
+  https://docs.beefree.io/beefree-sdk/other-customizations/appearance/custom-css
+*/
+
+body.bee--cs .sidebar-draggable-heading--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-heading--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/heading.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-image--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-image--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/image.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-button--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-button--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/button.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-divider--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-divider--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/divider.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-spacer--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-spacer--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/spacer.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-social--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-social--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/social.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-html--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-html--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/code.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-video--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-video--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/video.svg') !important;
+}
+
+body.bee--cs .sidebar-draggable-text--cs .image-drag svg {
+  display: none !important;
+}
+
+body.bee--cs .sidebar-draggable-text--cs .image-drag {
+  width: 24px !important;
+  height: 24px !important;
+  content: url('/icons/blocks/paragraph.svg') !important;
+}
